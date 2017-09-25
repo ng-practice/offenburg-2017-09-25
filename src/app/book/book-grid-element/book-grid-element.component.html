@@ -1,0 +1,12 @@
+
+<p>Titel: {{book.tilte}}</p>
+<p>Preis: {{book.price}}</p>
+<p>Autoren: {{book.authors}}</p>
+<p>ISBN: {{book.isbn}}</p>
+<p>Rating: {{book.rating}}</p>
+<div class="actions">
+  <button class="btn btn-default"
+    (click)="decreaseRating()">-</button>
+  <button class="btn btn-default"
+    (click)="increaseRating()">+</button>
+</div>
