@@ -1,5 +1,5 @@
 <tr-book-grid-element
-  *ngFor="let book of books"
+  *ngFor="let book of (books | async)"
   [book]="book">
 
 </tr-book-grid-element>

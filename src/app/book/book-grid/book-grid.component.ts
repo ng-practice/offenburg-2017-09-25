@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Book } from '../models/book';
 import { BookService } from 'app/book/core/book.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'tr-book-grid',
@@ -8,19 +9,13 @@ import { BookService } from 'app/book/core/book.service';
   styleUrls: ['./book-grid.component.sass']
 })
 export class BookGridComponent implements OnInit {
-  books: Book[];
+  books: Observable< Book[] >;
   constructor(
     private bookService: BookService
   ) { }
 
   ngOnInit() {
-    this.bookService.all()
-    .subscribe(books => {
-      this.books = books;
-      this.books.sort(
-        (a: Book, b: Book) => b.rating - a.rating);
-      });
-
-  }
-
+    this.bookService.books = this.bookService.allFromApi();
+    this.books = this.bookService.books;
+}
 }

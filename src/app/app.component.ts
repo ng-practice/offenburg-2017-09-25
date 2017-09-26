@@ -9,21 +9,6 @@ import { Book } from './book/models/book';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-  title = 'Ng-Worshop seed';
-  books: Book[];
-  isGridView: boolean;
-  constructor() {
-
-    this.isGridView = true;
-   }
-
-  ngOnInit() {
-
-  }
-  setViewMode(isGridView: boolean) {
-    this.isGridView = isGridView;
-  }
-
+export class AppComponent {
 
 }

@@ -1,9 +1,10 @@
 export class Book {
   rating = 0;
-  thumbnail: string;
+  cover: string;
+  description: string;
 
   constructor(
-    public tilte: string,
+    public title: string,
     public price: number,
     public authors: string[],
     public isbn: string

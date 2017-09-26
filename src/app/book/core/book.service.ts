@@ -1,34 +1,44 @@
 import { Injectable } from '@angular/core';
 import { Book } from '../models/book';
 import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
+
+
 
 import 'rxjs/add/observable/of';
-
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
+import { environment } from 'environments/environment';
 
 @Injectable()
 export class BookService {
-  books: Book[] = [
-    new Book('Angular', 30, ['Misko Hevery'], '123456789'),
-    new Book('Aurelia', 30, ['Rob Eisenberg'], '1234567986'),
-    new Book('VueJS', 20, ['Evan You'], '123456000'),
-  ];
+  books: Observable < Book[] >;
+
+  constructor(
+    private http: HttpClient) {}
 
   addBook(book: Book) {
-    this.books.unshift(book);
+    //this.books.unshift(book);
+    return this.http.post<{message: string, href: string}>
+      (`${environment.backendUrl}/book`, book);
   }
 
-  all(): Observable< Book[]> {
-    return Observable
-    .of(this.books)
-    .map(books => {
-     return books.filter(book => {
-        return book.price > 20;
-      }
-    );
-  })
-    .delay(2000);
-  }
+  allFromApi(): Observable< Book[] > {
+    return this.http.get< Book[] >
+      (`${environment.backendUrl}/books`);
+    /*  .map((booksResponse: any[]) => {
+        return booksResponse
+        .map(bookResponse => {
+          return new Book(
+            bookResponse.title,
+            0,
+            bookResponse.authors,
+          bookResponse.isbn);
+        });
+      });
+      */
+    }
+
+
 }
