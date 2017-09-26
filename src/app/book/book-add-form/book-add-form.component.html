@@ -1,0 +1,50 @@
+<form #addForm="ngForm" (ngSubmit)="addBook(addForm)">
+<div class="form-group">
+    <label>ISBN</label>
+  <label
+  [class.invalid]=
+  "isbn.invalid && (isbn.dirty || isbn.touched)"
+  class="
+    tooltip
+    tooltip-validation
+    tooltip-top-left
+    tooltip-md">
+      <input
+        type="text"
+        name="isbn"
+        required
+        [(ngModel)]="book.isbn"
+        #isbn="ngModel">
+        <span class="tooltip-content">
+          Ungültig
+        </span>
+  </label>
+</div>
+<div class="form-group">
+  <label>Title</label>
+    <input
+      type="text"
+      name="title"
+      [(ngModel)]="book.tilte">
+</div>
+<div class="form-group">
+  <label>Authors</label>
+    <input
+      type="text"
+      name="authors"
+      [(ngModel)]="book.authors">
+</div>
+<div class="form-group">
+  <label>Price</label>
+    <input
+      type="text"
+      name="price"
+      [(ngModel)]="book.price">
+</div>
+<button
+class="btn btn-default"
+  [disabled]="addForm.invalid"
+  type="submit">
+  Buch anlegen
+</button>
+</form>

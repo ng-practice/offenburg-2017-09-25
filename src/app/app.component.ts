@@ -28,4 +28,8 @@ export class AppComponent implements OnInit {
   setViewMode(isGridView: boolean) {
     this.isGridView = isGridView;
   }
+
+  addBook(book: Book) {
+    this.books.unshift(book);
+  }
 }
