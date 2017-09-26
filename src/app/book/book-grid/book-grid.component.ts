@@ -15,7 +15,6 @@ export class BookGridComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.bookService.books = this.bookService.allFromApi();
-    this.books = this.bookService.books;
+    this.books = this.bookService.allFromApi();
 }
 }
