@@ -1,10 +1,10 @@
 Hello to {{title}}
 
-<tr-book-grid *ngIf="isGridView; else listview" [books]="books">
+<tr-book-grid *ngIf="isGridView; else listview" >
 </tr-book-grid>
 
 <ng-template #listview>
-  <tr-book-list [books]="books">
+  <tr-book-list>
   </tr-book-list>
 </ng-template>
 
@@ -14,6 +14,6 @@ Hello to {{title}}
   >
 </tr-toggle-view-mode>
 
-<tr-book-add-form (create)="addBook($event)">
+<tr-book-add-form>
 
 </tr-book-add-form>

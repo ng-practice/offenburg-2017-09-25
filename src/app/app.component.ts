@@ -14,11 +14,7 @@ export class AppComponent implements OnInit {
   books: Book[];
   isGridView: boolean;
   constructor() {
-    this.books = [
-      new Book('Angular', 30, ['Misko Hevery'], '123456789'),
-      new Book('Aurelia', 30, ['Rob Eisenberg'], '1234567986'),
-      new Book('VueJS', 20, ['Evan You'], '123456000'),
-    ];
+
     this.isGridView = true;
    }
 
@@ -29,7 +25,5 @@ export class AppComponent implements OnInit {
     this.isGridView = isGridView;
   }
 
-  addBook(book: Book) {
-    this.books.unshift(book);
-  }
+
 }

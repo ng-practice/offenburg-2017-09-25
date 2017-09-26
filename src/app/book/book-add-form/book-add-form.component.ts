@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Book } from '../models/book';
 import { NgForm } from '@angular/forms';
+import { BookService } from 'app/book/core/book.service';
 
 @Component({
   selector: 'tr-book-add-form',
@@ -9,8 +10,9 @@ import { NgForm } from '@angular/forms';
 })
 export class BookAddFormComponent implements OnInit {
   book: Book;
-  @Output() create = new EventEmitter< Book >();
-  constructor() {
+  constructor(
+    private bookService: BookService
+  ) {
     this.book = new Book('', 0, [], '');
    }
 
@@ -18,7 +20,8 @@ export class BookAddFormComponent implements OnInit {
   }
 
   addBook(addForm: NgForm) {
-    this.create.emit( { ...{}, ...this.book});
+    this.bookService
+      .addBook( { ...{}, ...this.book});
     addForm.reset();
   }
 
