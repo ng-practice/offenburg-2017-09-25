@@ -1,12 +1,16 @@
 
-<p>Titel: {{book.title}}</p>
-<p>Preis: {{book.price}}</p>
-<p>Autoren: {{book.authors}}</p>
-<p>ISBN: {{book.isbn}}</p>
-<p>Rating: {{book.rating}}</p>
-<div class="actions">
-  <button class="btn btn-default"
-    (click)="decreaseRating()">-</button>
-  <button class="btn btn-default"
-    (click)="increaseRating()">+</button>
-</div>
+<a [routerLink]="['/book', book.isbn]" target="_blank">
+  <p>Titel: {{book.title}}</p>
+  <p>Preis: {{book.price}}</p>
+  <p>Autoren: {{book.authors}}</p>
+  <p>ISBN: {{book.isbn}}</p>
+  <p>Rating: {{book.rating}}</p>
+  <div class="actions">
+    <button class="btn btn-default"
+      (click)="decreaseRating()">-</button>
+    <button class="btn btn-default"
+      (click)="increaseRating()">+</button>
+    <button class="btn btn-default"
+      (click)="routeToDetails(book.isbn)">GoToDetails</button>
+  </div>
+</a>

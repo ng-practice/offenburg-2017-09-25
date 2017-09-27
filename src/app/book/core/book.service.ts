@@ -9,6 +9,7 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/timer';
 import { environment } from 'environments/environment';
 
 @Injectable()
@@ -22,6 +23,15 @@ export class BookService {
     //this.books.unshift(book);
     return this.http.post<{message: string, href: string}>
       (`${environment.backendUrl}/book`, book);
+  }
+
+  bookByIsbn(isbn: String) {
+    return this.http.get< Book >
+    (`${environment.backendUrl}/book/${isbn}`);
+  }
+
+  booksTimer() {
+    return Observable.timer(200, 1000);
   }
 
   allFromApi(): Observable< Book[] > {

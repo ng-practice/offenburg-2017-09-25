@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Route } from '@angular/router';
-import { NotFoundComponent } from 'app/not-found/not-found.component';
 import { BookDashboardComponent } from 'app/book/book-dashboard/book-dashboard.component';
 import { BookDetailComponent } from 'app/book/book-detail/book-detail.component';
 

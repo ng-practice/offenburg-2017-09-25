@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { Book } from '../models/book';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'tr-book-grid-element',
@@ -9,7 +10,9 @@ import { Book } from '../models/book';
 })
 export class BookGridElementComponent implements OnInit {
   @Input() book: Book;
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }
@@ -20,6 +23,10 @@ export class BookGridElementComponent implements OnInit {
 
   increaseRating() {
     this.book.rating ++;
+  }
+
+  routeToDetails(isbn: string) {
+    this.router.navigate(['/book', isbn]);
   }
 
 }

@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Route } from '@angular/router';
-import { NotFoundComponent } from 'app/not-found/not-found.component';
 
 const routes: Route[] = [
-  {path: '**', component: NotFoundComponent }
-]
+  {path: '',
+  loadChildren: './fallback/fallback-module#FallBackModule' }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
