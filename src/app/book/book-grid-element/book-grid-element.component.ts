@@ -22,6 +22,9 @@ export class BookGridElementComponent implements OnInit {
   }
 
   increaseRating() {
+    if (this.book.rating >= 5) {
+      return;
+    }
     this.book.rating ++;
   }
 

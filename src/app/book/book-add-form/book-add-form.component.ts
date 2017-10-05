@@ -10,7 +10,7 @@ import { BookService } from 'app/book/core/book.service';
 })
 export class BookAddFormComponent implements OnInit {
   book: Book;
-  bookCreated = new EventEmitter< boolean >();
+  @Output() bookCreated = new EventEmitter< Book >();
   constructor(
     private bookService: BookService
   ) {
@@ -21,11 +21,7 @@ export class BookAddFormComponent implements OnInit {
   }
 
   addBook(addForm: NgForm) {
-    this.bookService
-      .addBook( { ...{}, ...this.book})
-      .subscribe(res => {
-        alert(`${res.message}`);
-      });
+    this.bookCreated.emit(this.book);
     addForm.reset();
   }
 

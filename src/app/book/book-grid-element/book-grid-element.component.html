@@ -4,13 +4,17 @@
   <p>Preis: {{book.price}}</p>
   <p>Autoren: {{book.authors}}</p>
   <p>ISBN: {{book.isbn}}</p>
-  <p>Rating: {{book.rating}}</p>
+  <p class="rating">Rating: {{book.rating}}</p>
+</a>
   <div class="actions">
-    <button class="btn btn-default"
+    <button
+      name="book-rate-down-btn"
+      class="btn btn-default"
       (click)="decreaseRating()">-</button>
     <button class="btn btn-default"
+      name="book-rate-up-btn"
       (click)="increaseRating()">+</button>
     <button class="btn btn-default"
       (click)="routeToDetails(book.isbn)">GoToDetails</button>
   </div>
-</a>
+
